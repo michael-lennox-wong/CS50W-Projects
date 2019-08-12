@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block heading %}{% endblock %}</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+        <style>
+            background-color: @brand-primary;
+            .foo {
+              position: absolute;
+              bottom: 0px;
+              right: 15px;
+            }
+        </style>
+    </head>
+    <body style="background-color:darkseagreen; font-family:garamond; text-align:center" >
+        <h1>{% block pagetitle %}{% endblock %}</h1>
+        <div class="container">
+            {% block body %}
+            {% endblock %}
+        </div>
+        <div class="foo">
+            Logged in as {{ current_user }}
+        </div>
+    </body>
+</html>

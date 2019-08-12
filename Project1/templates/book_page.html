@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    project1
+{% endblock %}
+
+{% block pagetitle %}
+<!-- On this page we want the books title as the title of the page,
+we need to include the author, ISBN and year of publication, the average rating,
+as well as any reviews.  We also need to allow for the possibility of leaving
+a review (we should decide whether to leave a box in this page or set up another
+page for that).
+-->
+<i>{{ book_details.title }}</i>
+{% endblock %}
+
+{% block body %}
+<h3>
+Author: {{ book_details.author }} <br>
+Year of publication: {{ book_details.year }} <br>
+ISBN: {{ book_details.isbn }} <br>
+<br>
+{% if already_reviewed %}
+    {% for rev in book_reviews %}
+        {% if rev.reviewer == current_user %}
+            You left a review of this book on {{ rev.rev_date }}.
+        {% endif %}
+    {% endfor %}
+{% else %}
+Leave your review of <i>{{ book_details.title }}</i> here:
+    <h5>
+        <form action = "/review_submission/{{ book_details.id }}" method = "post" > <br>
+             <textarea rows = "5" cols = "60" name = "review_text" placeholder="Enter details here..."></textarea><br>
+             <input type="text" name="rating" placeholder="Rating from 1 to 5"> <br>
+             <input type = "submit" value = "Submit your review"/>
+        </form>
+    </h5>
+</h2>
+{% endif %}
+
+<h2>
+    Reviews
+</h2>
+
+<ul>
+    {% for rev in book_reviews %}
+        <li>{{ rev.review }}<br>
+          {{ rev.rating }}<br>
+          {{ rev.reviewer}}
+          {{ rev.rev_date }}
+    {% endfor %}
+</ul>
+
+<h6>
+    This book has an average rating of {{ gr_avg }} on goodreads.com based on {{ gr_revs }} reviews.
+</h6>
+
+<h5>
+{% if not (books == None) %}
+<a href="{{url_for("back_to_results")}}">Back to search results</a>
+{% endif %}
+</h5>
+
+<h5>
+<a href="/search">Search page</a>
+</h5>
+
+<br>
+
+<form action="{{ url_for('logout_proc') }}" method="post">
+  <button>Logout</button>
+</form>
+
+{% endblock %}

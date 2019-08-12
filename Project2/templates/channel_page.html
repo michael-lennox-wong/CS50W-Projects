@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+        <script src="{{ url_for('static', filename='channel_page.js') }}?017"></script>
+        <title>Flack</title>
+    </head>
+    <body>
+      <h1 id="channel_name">{{ channel }}</h1>
+      <ul id="msg_list">
+        {% for msg in msg_list_pj %}
+          <li>{{msg.0}}<br><small>{{msg.1}}, {{msg.2}}</small></li>
+        {% endfor %}
+      </ul><br>
+      <form id="new-task">
+        <input id="task" autocomplete="off" autofocus placeholder="New Task" type="text">
+        <input id="task_submit" type="submit">
+      </form>
+      <br>
+      <a id="go_back" href={{ url_for('ch_list') }} style="text-decoration:none">Return to the channel list</a><br>
+      <br>
+      <small>Signed in as <span id="user_display"></span></small><br>
+      <button id="logout">Logout</button>
+    </body>
+</html>

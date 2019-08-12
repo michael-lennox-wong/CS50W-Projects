@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    project1
+{% endblock %}
+
+{% block pagetitle %}
+
+{% endblock %}
+
+{% block body %}
+    <h1>
+      Your search gave the following:
+    </h1>
+    <h4>
+      <ol>
+        {% for book in books %}
+            <li><a href="/books/{{ book.id }}"><i>{{ book.title }}</i></a>, {{ book.author }}, {{ book.year }}, ISBN {{ book.isbn }};
+        {% endfor %}
+    </h4>
+
+    <h5>
+    <a href="/search">Search page</a>
+    </h5>
+
+    <br>
+    
+    <form action="{{ url_for('logout_proc') }}" method="post">
+      <button>Logout</button>
+    </form>
+
+{% endblock %}

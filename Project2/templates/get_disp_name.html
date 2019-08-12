@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelector('#get_screen_name').onsubmit = function() {
+                    const screen_name = document.querySelector('#name_choice').value;
+                    // need to use localStorage here
+                    localStorage.setItem('display_name', screen_name);
+                    window.location.href= "{{ url_for('ch_list') }}"
+                    // alert(`Hello ${screen_name}!`);
+                };
+            });
+        </script>
+        <title>Flack</title>
+    </head>
+    <body>
+      It appears that you do not yet have a display name.  Please enter one here: <br>
+      <br>
+        <form id="get_screen_name" action="{{ url_for('index') }}">
+            <input id="name_choice" autocomplete="off" autofocus placeholder="Choose display name" type="text">
+            <input type="submit">
+        </form>
+    </body>
+</html>

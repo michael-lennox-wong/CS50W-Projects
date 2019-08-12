@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+        <!-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script> -->
+        <script src="{{ url_for('static', filename='channel_list.js') }}?004"></script>
+    <title>Flack</title>
+  </head>
+  <body>
+    <h1>Channel List</h1>
+      {% if chan_list %}
+        <ul>
+          {% for ch in chan_list %}
+            <li><a href="/channels/{{ ch }}">{{ ch }}</a></li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        There are no channels yet, please create one below.
+      {% endif %}
+
+    <h3>Create a new channel</h3>
+      If you'd like to create a new channel, enter a name for it below:<br>
+      <br>
+      <form id="new_channel" action="{{ url_for('ch_list') }}" method="post">
+      <input id="ncn" name="new_chan_name" autocomplete="off" autofocus
+        placeholder="Enter the name for the new channel" type="text">
+      <input id="ncnsub" type="submit">
+    </form><br>
+      {% if err %}
+        {{ err }}
+      {% endif %}
+      <br>
+      <br>
+      <form id="user_id" action="{{ url_for('see_my_messages') }}" method="POST" >
+        <button id="my_msgs" name="name_in_storage" type="submit" formmethod="post" value="">My messages</button>
+      </form>
+      <br>
+      <small>Signed in as <span id="user_display"></span></small><br>
+      <button id="logout">Logout</button>
+  </body>
+</html>

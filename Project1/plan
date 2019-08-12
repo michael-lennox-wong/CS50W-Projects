@@ -1,0 +1,16 @@
+
+
+
+# a. login page
+# b. registration page
+# c. personal home page: should have options to view reviews, search for books,
+# leave reviews,
+
+# We will have a page that serves as both a login and registration page
+# We will do the registration part first.
+
+# For registration, we need to check that the desired username is not in there
+# database; this is the only error we will account for at this juncture
+
+# database:
+# tables:  books, users

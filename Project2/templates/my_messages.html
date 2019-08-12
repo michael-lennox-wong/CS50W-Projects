@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<!--        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+        <script src="{{ url_for('static', filename='channel_page.js') }}?017"></script>-->
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            // Get display name
+            const username = localStorage.getItem('display_name');
+
+            // Display the user at bottom of page
+            document.querySelector('#user_display').innerHTML = username;
+
+            // logout procedure
+            document.querySelector('#logout').onclick = () => {
+              localStorage.removeItem('display_name');
+              localStorage.removeItem('last_channel');
+              window.location.href="/";
+            };
+          })
+
+        </script>
+
+        <title>Flack</title>
+    </head>
+    <body>
+      <h1>My messages</h1>
+      <ul id="my_msg_list">
+        {% for ch in channels %}
+          <h2>{{ ch }}</h2>
+          {% for msg in user_msgs_j[ch] %}
+            <li>{{msg.0}}<br><small>{{msg.2}}</small></li>
+          {% endfor %}
+        {% endfor %}
+      </ul><br>
+<!--      {{ user_msgs_j }}<br>
+      {{ user_msgs_j.Test }}
+      <br> -->
+      <a id="go_back" href={{ url_for('ch_list') }} style="text-decoration:none">Return to the channel list</a><br>
+      <br>
+      <small>Signed in as <span id="user_display"></span></small><br>
+      <button id="logout">Logout</button>
+    </body>
+</html>
