@@ -1,0 +1,37 @@
+{% extends "orders/base.html" %}
+
+{% block body %}
+<center>
+<h2>{{ title }}</h2>
+Click to add to your order:<br>
+</center>
+
+<table width="25%" align="center">
+  <tbody>
+	  <tr>
+		  <td></td>
+		  <td></td>
+	  </tr>
+      {% for item in item_list %}
+        <tr style="text-align: left;">
+          <td>
+            <form method="POST" action="{% url 'choose_item' %}">
+              {% csrf_token %}
+              <button class="salad_or_pasta" type="submit" name="menu_item"
+              value="{{ item.id }}">
+                {{ item }}
+              </button>
+            </form>
+          </td>
+          <td>${{ item.price }}</td>
+        </tr>
+      {% endfor %}
+  </tbody>
+</table>
+
+Logged in as {{ user.username }}<br>
+<a href="{% url 'current_order' %}">View order</a><br>
+<a href="{% url 'index' %}">Return to menu</a><br>
+<a href="{% url 'logout' %}">Logout</a>
+
+{% endblock %}

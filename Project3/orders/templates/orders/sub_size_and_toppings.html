@@ -1,0 +1,46 @@
+{% extends "orders/base.html" %}
+
+{% block body %}
+<center>
+<h2>Choose sub size and toppings</h2>
+
+You have chosen a {{ sub_name }} sub.  Select the size and toppings:<br>
+</center>
+
+<form action="{% url 'get_sub' %}" method="post">
+    {% csrf_token %}
+    {% if sub1 %}
+      Mushrooms
+      <input type="checkbox" name="mush" value="1"><br>
+      Green Peppers
+      <input type="checkbox" name="gp" value="1"><br>
+      Onions
+      <input type="checkbox" name="o" value="1"><br>
+      <input type="hidden" name="sub1" value="1">
+    {% endif %}
+    Extra Cheese
+    <input type="checkbox" name="ec" value="1"><br>
+
+    {% if spo %}
+      Sausauge, Pepper and Onion Subs come only in Large.
+      <input type="hidden" name="size" value="L">
+    {% else %}
+      Size
+      <select name="size">
+        {% for size in sizes %}
+            <option value="{{ size.0 }}">{{ size.1 }}</option>
+        {% endfor %}
+      </select>
+    {% endif %}
+    <input type="hidden" name="choice" value="{{ sub_type }}">
+    <input type="submit" value="Select sub">
+</form><br>
+
+
+Logged in as {{ user.username }}<br>
+<a href="{% url 'current_order' %}">View order</a><br>
+<a href="{% url 'index' %}">Return to menu</a><br>
+<a href="{% url 'logout' %}">Logout</a>
+
+
+{% endblock %}

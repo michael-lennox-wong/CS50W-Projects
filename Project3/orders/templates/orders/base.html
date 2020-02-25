@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <style>
+        a {text-decoration: none}
+
+        button.salad_or_pasta { /*So that buttons look like links */
+          background: none!important;
+          border: none;
+          padding: 0!important;
+          /*optional*/
+          font-family: times, serif;
+          font-size: 16px;
+          /*input has OS specific font-family*/
+          color: #069;
+          text-decoration: none;
+          cursor: pointer;
+        }
+
+        input.submit {
+          font-family: times, serif;
+        }
+
+        td.red{ background-color: red;
+        }
+        td.green{ background-color: green;}
+        td.white{ background-color: white;}
+
+        table {border-spacing: 24px 0;}
+
+        option {
+          font-family: times, serif;
+        }
+      </style>
+        <title>Pinocchio's Pizza &amp; Subs</title>
+    </head>
+    <body style="background-color:#f5bc42;">
+        {% block body %}
+        {% endblock %}
+    </body>
+</html>

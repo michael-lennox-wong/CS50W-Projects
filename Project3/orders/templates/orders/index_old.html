@@ -1,0 +1,421 @@
+
+<!-- <!DOCTYPE html> PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+  <title>Pinochio's Pizza &amp; Subs:  Menu</title>
+  <meta name="generator" content="amaya 9.1, see http://www.w3.org/Amaya/" />
+  <link rel="stylesheet" type="text/css" href="site.css" />
+</head>
+<body> -->
+{% extends "orders/base.html" %}
+
+{% block body %}
+<div id="header">
+<table width="45%" cellspacing="0" cellpadding="0" align="center">
+  <tbody>
+    <tr>
+      <td class="green" width="20%">&nbsp;</td>
+      <td width="60%">
+	      <img height="140" src="C:\\Users\\micha\\Documents\\GitHub\\CS50W\\Project3a\\orders\\templates\\orders\\images\\pinocchio_72.gif" alt="Pinocchio" >
+        <h1>Pinocchio's Pizza &amp; Subs</h1>
+        <h2>74 Winthrop Street<br/>
+        Harvard Square<br/>
+        617-876-4897</h2>
+      </td>
+      <td class="red" width="20%">&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+{% if logged_in %}
+  Logged in as {{ user.username }}<br>
+  <a href="{% url 'logout' %}">Logout</a>
+{% else %}
+  <a href="{% url 'login' %}" style="text-decoration: none">Login</a><br>
+  <a href="{% url 'new_eater' %}" style="text-decoration: none">Create new account</a><br>
+{% endif %}
+
+<!-- </div><div id="menu">
+  <ul>
+    <li><a href="index.html" id="">Home</a></li>
+    <li><a href="menu.html" id="youarehere">Menu</a></li>
+    <li><a href="directions.html" id="">Directions</a></li>
+    <li><a href="hours.html"  id="">Hours</a></li>
+    <li><a href="sicilian_vs_regular.html"  id="">Sicilian vs. Regular</a></li>
+    <li><a href="contact.html"  id="">Contact Us</a></li>
+  </ul></div><div id="main"> -->
+
+  <!-- <table width="100%">
+  <tbody>
+    <tr>
+      <td width="50%">
+	<div class="callout">
+	<h2>Our Menu</h2><div class="internalmenunav">
+<a href="#regular_pizza">Regular Pizza</a> |
+<a href="#sicilian_pizza">Sicilian Pizza</a> |
+<a href="#toppings">Toppings</a> |
+<a href="#subs">Subs</a> |
+<a href="#pasta">Pasta</a> |
+<a href="#salad">Salad</a> |
+<a href="#dinner">Dinner Platters</a>
+</div>	 -->
+
+<center>
+<table width="45%" class="foodmenu" align="center" style="display: inline-block;">
+  <tbody>
+	   <tr>
+		     <th colspan="3"><a name="regular_pizza">Regular Pizza</a></th>
+	   </tr>
+	   <tr>
+		     <td></td>
+		<td>Small</td>
+		<td>Large</td>
+	      </tr>	      <tr>
+		<td width="35%">Cheese</td>
+		<td width="30%">12.70</td>
+		<td width="30%">17.95</td>
+	      </tr>	      <tr>
+		<td width="35%">1 topping</td>
+		<td width="30%">13.70</td>
+		<td width="30%">19.95</td>
+	      </tr>	      <tr>
+		<td width="35%">2 toppings</td>
+		<td width="30%">15.20</td>
+		<td width="30%">21.95</td>
+	      </tr>	      <tr>
+		<td width="35%">3 toppings</td>
+		<td width="30%">16.20</td>
+		<td width="30%">23.95</td>
+	      </tr>	      <tr>
+		<td width="35%">Special</td>
+		<td width="30%">17.75</td>
+		<td width="30%">25.95</td>
+	      </tr>	    </tbody>
+	  </table>
+
+  <!-- <div class="internalmenunav">
+  <a href="#regular_pizza">Regular Pizza</a> |
+  <a href="#sicilian_pizza">Sicilian Pizza</a> |
+  <a href="#toppings">Toppings</a> |
+  <a href="#subs">Subs</a> |
+  <a href="#pasta">Pasta</a> |
+  <a href="#salad">Salad</a> |
+  <a href="#dinner">Dinner Platters</a>
+  </div>	   -->
+
+<table width="45%" class="foodmenu" align="center" style="display: inline-block;">
+	    <tbody>
+	      <tr>
+		<th colspan="3"><a name="sicilian_pizza">Sicilian Pizza</a></th>
+	      </tr>
+	      <tr>
+		<td></td>
+		<td>Small</td>
+		<td>Large</td>
+	      </tr>	      <tr>
+		<td width="15%">Cheese</td>
+		<td width="15%">24.45</td>
+		<td width="15%">38.70</td>
+	      </tr>	      <tr>
+		<td width="35%">1 item</td>
+		<td width="30%">26.45</td>
+		<td width="30%">40.70</td>
+	      </tr>	      <tr>
+		<td width="35%">2 items</td>
+		<td width="30%">28.45</td>
+		<td width="30%">42.70</td>
+	      </tr>	      <tr>
+		<td width="35%">3 items</td>
+		<td width="30%">29.45</td>
+		<td width="30%">44.70</td>
+	      </tr>	      <tr>
+		<td width="35%">Special</td>
+		<td width="30%">30.45</td>
+		<td width="30%">45.70</td>
+	      </tr>	    </tbody>
+	  </table>
+</center>
+<!-- <div class="internalmenunav">
+<a href="#regular_pizza">Regular Pizza</a> |
+<a href="#sicilian_pizza">Sicilian Pizza</a> |
+<a href="#toppings">Toppings</a> |
+<a href="#subs">Subs</a> |
+<a href="#pasta">Pasta</a> |
+<a href="#salad">Salad</a> |
+<a href="#dinner">Dinner Platters</a>
+</div>	   -->
+
+<table width="50%" class="toppingmenu" align="center">
+	<tbody>
+	  <tr>
+		  <th colspan="4"><a name="toppings">Toppings</a></th>
+	  </tr>
+    <tr>
+		  <td>Pepperoni</td>
+      <td>Canadian Bacon</td>
+      <td>Hamburger</td>
+      <td>Anchovies</td>
+    </tr>
+    <tr>
+		  <td>Sausage</td>
+      <td>Pineapple</td>
+      <td>Spinach</td>
+      <td>Black Olives</td>
+    </tr>
+    <tr>
+		  <td>Mushrooms</td>
+      <td>Eggplant</td>
+      <td>Artichoke</td>
+      <td>Fresh Garlic</td>
+    </tr>
+    <tr>
+		  <td>Onions</td>
+      <td>Tomato &amp; Basil</td>
+      <td>Buffalo Chicken</td>
+      <td>Zucchini</td>
+	  </tr>
+    <tr>
+		  <td>Ham</td>
+      <td>Green Peppers</td>
+      <td>Barbecue Chicken</td>
+	  </tr>
+  </tbody>
+</table>
+
+<!-- <div class="internalmenunav">
+<a href="#regular_pizza">Regular Pizza</a> |
+<a href="#sicilian_pizza">Sicilian Pizza</a> |
+<a href="#toppings">Toppings</a> |
+<a href="#subs">Subs</a> |
+<a href="#pasta">Pasta</a> |
+<a href="#salad">Salad</a> |
+<a href="#dinner">Dinner Platters</a>
+</div>	   -->
+
+<table width="40%" class="foodmenu" align="center">
+	    <tbody>
+	      <tr>
+		<th colspan="3"><a name="subs">Subs</a></th>
+	      </tr>
+	      <tr>
+		<td></td>
+		<td>Small</td>
+		<td>Large</td>
+	      </tr>	      <tr>
+		<td style="text-align: left;" width="50%">Cheese</td>
+		<td width="25%">6.50</td>
+		<td width="25">7.95</td>
+	      </tr>	      <tr>
+		<td style="text-align: left;" width="50%">Italian</td>
+		<td width="25%">6.50</td>
+		<td width="25">7.95</td>
+	      </tr>	      <tr>
+		<td style="text-align: left;" width="50%">Ham + Cheese</td>
+		<td width="25%">6.50</td>
+		<td width="25">7.95</td>
+	      </tr>	      <tr>
+		<td style="text-align: left;" width="50%">Meatball</td>
+		<td width="25%">6.50</td>
+		<td width="25">7.95</td>
+	      </tr>	      <tr>
+		<td style="text-align: left;" width="50%">Tuna</td>
+		<td width="25%">6.50</td>
+		<td width="25">7.95</td>
+	      </tr>	      <tr>
+		<td style="text-align: left;" width="50%">Turkey</td>
+		<td width="25%">7.50</td>
+		<td width="25">8.50</td>
+	      </tr>	      <tr>
+		<td style="text-align: left;" width="50%">Chicken Parmigiana</td>
+		<td width="25%">7.50</td>
+		<td width="25">8.50</td>
+	      </tr>	      <tr>
+		<td style="text-align: left;" width="50%">Eggplant Parmigiana</td>
+		<td width="25%">6.50</td>
+		<td width="25">7.95</td>
+	      </tr>	      <tr>
+		<td style="text-align: left;" width="50%">Steak</td>
+		<td width="25%">6.50</td>
+		<td width="25">7.95</td>
+	      </tr>	      <tr>
+		<td style="text-align: left;" width="50%">Steak + Cheese</td>
+		<td width="25%">6.95</td>
+		<td width="25">8.50</td>
+	      </tr>	      <tr>
+		<td style="text-align: left;" width="50%">+ Mushrooms</td>
+		<td width="25%">+0.50</td>
+		<td width="25">+0.50</td>
+	      </tr>	      <tr>
+		<td style="text-align: left;" width="50%">+ Green Peppers</td>
+		<td width="25%">+0.50</td>
+		<td width="25">+0.50</td>
+	      </tr>	      <tr>
+		<td style="text-align: left;" width="50%">+ Onions</td>
+		<td width="25%">+0.50</td>
+		<td width="25">+0.50</td>
+	      </tr>	      <tr>
+		<td style="text-align: left;" width="50%">Sausage, Peppers & Onions</td>
+		<td width="25%"></td>
+		<td width="25">8.50</td>
+	      </tr>	      <tr>
+		<td style="text-align: left;" width="50%">Hamburger</td>
+		<td width="25%">4.60</td>
+		<td width="25">6.95</td>
+	      </tr>	      <tr>
+		<td style="text-align: left;" width="50%">Cheeseburger</td>
+		<td width="25%">5.10</td>
+		<td width="25">7.45</td>
+	      </tr>	      <tr>
+		<td style="text-align: left;" width="50%">Fried Chicken</td>
+		<td width="25%">6.95</td>
+		<td width="25">8.50</td>
+	      </tr>	      <tr>
+		<td style="text-align: left;" width="50%">Veggie</td>
+		<td width="25%">6.95</td>
+		<td width="25">8.50</td>
+	      </tr>	      <tr>
+		<td style="text-align: left;" width="50%">Extra Cheese on any sub</td>
+		<td width="25%">+0.50</td>
+		<td width="25">+0.50</td>
+	      </tr>	    </tbody>
+	  </table>
+
+<!-- <div class="internalmenunav">
+<a href="#regular_pizza">Regular Pizza</a> |
+<a href="#sicilian_pizza">Sicilian Pizza</a> |
+<a href="#toppings">Toppings</a> |
+<a href="#subs">Subs</a> |
+<a href="#pasta">Pasta</a> |
+<a href="#salad">Salad</a> |
+<a href="#dinner">Dinner Platters</a>
+</div>	   -->
+
+<table width="25%" class="foodmenu" align="center">
+  <tbody>
+	  <tr>
+		  <th colspan="2"><a name="pasta">Pasta</a></th>
+	  </tr>
+	  <tr>
+		  <td></td>
+		  <td></td>
+	  </tr>
+    <tr>
+		  <td style="text-align: left;">Baked Ziti w/Mozzarella</td>
+		  <td>$6.50</td>
+	  </tr>
+    <tr>
+		  <td style="text-align: left;">Baked Ziti w/Meatballs</td>
+		  <td>$8.75</td>
+	  </tr>
+    <tr>
+		  <td style="text-align: left;">Baked Ziti w/Chicken</td>
+		  <td>$9.75</td>
+	  </tr>
+  </tbody>
+</table>
+
+<!-- <div class="internalmenunav">
+<a href="#regular_pizza">Regular Pizza</a> |
+<a href="#sicilian_pizza">Sicilian Pizza</a> |
+<a href="#toppings">Toppings</a> |
+<a href="#subs">Subs</a> |
+<a href="#pasta">Pasta</a> |
+<a href="#salad">Salad</a> |
+<a href="#dinner">Dinner Platters</a>
+</div>	   -->
+
+<table width="25%" class="foodmenu" align="center">
+	<tbody>
+	  <tr>
+      {% if logged_in %}
+        <th colspan="2"><a href="{% url 'salads' %}">Salads</a></th>
+      {% else %}
+		    <th colspan="2"><a name="salad">Salads</a></th>
+      {% endif %}
+	  </tr>
+	  <tr>
+		  <td></td>
+		  <td></td>
+	  </tr>
+    <tr>
+		  <td style="text-align: left;">Garden Salad</td>
+		  <td>$6.25</td>
+	  </tr>
+    <tr>
+		  <td style="text-align: left;">Greek Salad</td>
+		  <td>$8.25</td>
+	  </tr>
+    <tr>
+		  <td style="text-align: left;">Antipasto</td>
+		  <td>$8.25</td>
+	  </tr>
+    <tr>
+		  <td style="text-align: left;">Salad w/Tuna</td>
+		  <td>$8.25</td>
+	  </tr>
+  </tbody>
+</table>
+
+<!-- <div class="internalmenunav">
+<a href="#regular_pizza">Regular Pizza</a> |
+<a href="#sicilian_pizza">Sicilian Pizza</a> |
+<a href="#toppings">Toppings</a> |
+<a href="#subs">Subs</a> |
+<a href="#pasta">Pasta</a> |
+<a href="#salad">Salad</a> |
+<a href="#dinner">Dinner Platters</a>
+</div>	   -->
+
+<table width="40%" class="foodmenu" align="center">
+	    <tbody>
+	      <tr>
+		<th colspan="3"><a name="dinner">Dinner Platters</a></th>
+	      </tr>
+	      <tr>
+		<td></td>
+		<td></td>
+	      </tr>	      <tr>
+		<td style="text-align: left;" width="25%">Garden Salad</td>
+		<td width="35%">Small  $40.00  Large  $65.00</td>
+	      </tr>	      <tr>
+		<td style="text-align: left;" width="25%">Greek Salad</td>
+		<td width="35%">Small $50.00  Large  $75.00</td>
+	      </tr>	      <tr>
+		<td style="text-align: left;" width="25%">Antipasto</td>
+		<td width="35%">Small $50.00 Large $75.00</td>
+	      </tr>	      <tr>
+		<td style="text-align: left;" width="25%">Baked Ziti</td>
+		<td width="35%">Small $40.00 Large $65.00</td>
+	      </tr>	      <tr>
+		<td style="text-align: left;" width="25%">Meatball Parm</td>
+		<td width="35%">Small $50.00 Large $75.00</td>
+	      </tr>	      <tr>
+		<td style="text-align: left;" width="25%">Chicken Parm</td>
+		<td width="35%">Small $55.00 Large $85.00</td>
+	      </tr>	    </tbody>
+	  </table>
+
+<!-- <div class="internalmenunav">
+<a href="#regular_pizza">Regular Pizza</a> |
+<a href="#sicilian_pizza">Sicilian Pizza</a> |
+<a href="#toppings">Toppings</a> |
+<a href="#subs">Subs</a> |
+<a href="#pasta">Pasta</a> |
+<a href="#salad">Salad</a> |
+<a href="#dinner">Dinner Platters</a>
+</div>	 -->
+
+</div>
+      </td>
+
+      <td>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+{% endblock %}
+
+<!-- </body>
+</html> -->

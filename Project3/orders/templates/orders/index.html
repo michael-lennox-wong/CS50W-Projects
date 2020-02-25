@@ -1,0 +1,351 @@
+{% extends "orders/base.html" %}
+
+{% block body %}
+<!-- <div id="header"> -->
+<table width="65%" cellspacing="0" cellpadding="0" align="center">
+  <tbody>
+    <tr>
+      <td class="green" width="30%">&nbsp;</td>
+      <td class="white" width="40%">
+	      <img height="140" src="C:\\Users\\micha\\Documents\\GitHub\\CS50W\\Project3a\\orders\\templates\\orders\\images\\pinocchio_72.gif" alt="Pinocchio" >
+        <h2>Pinocchio's Pizza &amp; Subs</h2>
+        <h4>74 Winthrop Street<br>
+        Harvard Square<br>
+        617-876-4897</h4>
+      </td>
+      <td class="red" width="30%">
+        {% if logged_in %}
+          Logged in as {{ user.username }}<br>
+          {% if is_staff %}
+            <a href="{% url 'view_orders' %}">View placed orders</a><br>
+          {% endif %}
+          <a href="{% url 'current_order' %}">View order</a><br>
+          <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+          <a href="{% url 'login' %}" style="text-decoration: none">Login</a><br>
+          <a href="{% url 'new_eater' %}" style="text-decoration: none">Create new account</a><br>
+        {% endif %}
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="pizza" align="center" style="float:left">
+  <tbody>
+    <tr>
+      {% if logged_in %}
+        <th colspan="3"><a href="{% url 'pizza' %}">Regular Pizza</a></th>
+      {% else %}
+        <th colspan="3"><a name="pasta">Regular Pizza</a></th>
+      {% endif %}
+    </tr>
+	  <tr>
+		  <td></td>
+  		<td>Small</td>
+  		<td>Large</td>
+	  </tr>
+    <tr>
+  		<td>Cheese</td>
+  		<td>$12.70</td>
+  		<td>$17.95</td>
+	  </tr>
+    <tr>
+  		<td>1 topping</td>
+  		<td>$13.70</td>
+  		<td>$19.95</td>
+	  </tr>
+    <tr>
+  		<td>2 toppings</td>
+  		<td>$15.20</td>
+  		<td>$21.95</td>
+	  </tr>
+    <tr>
+  		<td>3 toppings</td>
+  		<td>$16.20</td>
+  		<td>$23.95</td>
+	  </tr>
+    <tr>
+  		<td>Special</td>
+  		<td>$17.75</td>
+  		<td>$25.95</td>
+	  </tr>
+  </tbody>
+</table>
+
+<table class="pizza" align="center">
+	    <tbody>
+        <tr>
+          {% if logged_in %}
+            <th colspan="3"><a href="{% url 'pizza' %}">Sicilian Pizza</a></th>
+          {% else %}
+    		    <th colspan="3"><a name="pasta">Sicilian Pizza</a></th>
+          {% endif %}
+    	  </tr>
+	      <tr>
+		  <td></td>
+  		<td>Small</td>
+  		<td>Large</td>
+	  </tr>
+    <tr>
+  		<td>Cheese</td>
+  		<td>$24.45</td>
+  		<td>$38.70</td>
+	  </tr>
+    <tr>
+  		<td>1 item</td>
+  		<td>$26.45</td>
+  		<td>$40.70</td>
+	  </tr>
+    <tr>
+  		<td>2 items</td>
+  		<td>$28.45</td>
+  		<td>$42.70</td>
+	  </tr>
+    <tr>
+  		<td>3 items</td>
+  		<td>$29.45</td>
+  		<td>$44.70</td>
+	  </tr>
+    <tr>
+  		<td>Special</td>
+  		<td>$30.45</td>
+  		<td>$45.70</td>
+	  </tr>
+  </tbody>
+</table>
+
+<table class="toppingmenu" align="center">
+	<tbody>
+	  <tr>
+		  <th colspan="4"><a name="toppings">Toppings</a></th>
+	  </tr>
+    <tr>
+		  <td>Pepperoni</td>
+      <td>Canadian Bacon</td>
+      <td>Hamburger</td>
+      <td>Anchovies</td>
+    </tr>
+    <tr>
+		  <td>Sausage</td>
+      <td>Pineapple</td>
+      <td>Spinach</td>
+      <td>Black Olives</td>
+    </tr>
+    <tr>
+		  <td>Mushrooms</td>
+      <td>Eggplant</td>
+      <td>Artichoke</td>
+      <td>Fresh Garlic</td>
+    </tr>
+    <tr>
+		  <td>Onions</td>
+      <td>Tomato &amp; Basil</td>
+      <td>Buffalo Chicken</td>
+      <td>Zucchini</td>
+	  </tr>
+    <tr>
+		  <td>Ham</td>
+      <td>Green Peppers</td>
+      <td>Barbecue Chicken</td>
+	  </tr>
+  </tbody>
+</table>
+
+<br>
+
+<table class="foodmenu" align="center">
+	    <tbody>
+        <tr>
+          {% if logged_in %}
+            <th colspan="3"><a href="{% url 'subs' %}">Subs</a></th>
+          {% else %}
+    		    <th colspan="3"><a name="pasta">Subs</a></th>
+          {% endif %}
+    	  </tr>
+	      <tr>
+		<td></td>
+		<td>Small</td>
+		<td>Large</td>
+	  </tr><tr>
+		<td style="text-align: left;">Cheese</td>
+		<td>$6.50</td>
+		<td>$7.95</td>
+	  </tr><tr>
+		<td style="text-align: left;">Italian</td>
+		<td>$6.50</td>
+		<td>$7.95</td>
+	  </tr><tr>
+		<td style="text-align: left;">Ham + Cheese</td>
+		<td>$6.50</td>
+		<td>$7.95</td>
+	  </tr><tr>
+		<td style="text-align: left;">Meatball</td>
+		<td>$6.50</td>
+		<td>$7.95</td>
+	  </tr><tr>
+		<td style="text-align: left;">Tuna</td>
+		<td>$6.50</td>
+		<td>$7.95</td>
+	  </tr><tr>
+		<td style="text-align: left;">Turkey</td>
+		<td>$7.50</td>
+		<td>$8.50</td>
+	  </tr><tr>
+		<td style="text-align: left;">Chicken Parmigiana</td>
+		<td>$7.50</td>
+		<td>$8.50</td>
+	  </tr><tr>
+		<td style="text-align: left;">Eggplant Parmigiana</td>
+		<td>$6.50</td>
+		<td>$7.95</td>
+	  </tr><tr>
+		<td style="text-align: left;">Steak</td>
+		<td>$6.50</td>
+		<td>$7.95</td>
+	  </tr><tr>
+		<td style="text-align: left;">Steak + Cheese</td>
+		<td>$6.95</td>
+		<td>$8.50</td>
+	  </tr><tr>
+		<td style="text-align: left;">+ Mushrooms</td>
+		<td>+$0.50</td>
+		<td>+$0.50</td>
+	  </tr><tr>
+		<td style="text-align: left;">+ Green Peppers</td>
+		<td>+$0.50</td>
+		<td>+$0.50</td>
+	  </tr><tr>
+		<td style="text-align: left;">+ Onions</td>
+		<td>+$0.50</td>
+		<td>+$0.50</td>
+	  </tr><tr>
+		<td style="text-align: left;">Sausage, Peppers & Onions</td>
+		<td></td>
+		<td>$8.50</td>
+	  </tr><tr>
+		<td style="text-align: left;">Hamburger</td>
+		<td>$4.60</td>
+		<td>$6.95</td>
+	  </tr><tr>
+		<td style="text-align: left;">Cheeseburger</td>
+		<td>$5.10</td>
+		<td>$7.45</td>
+	  </tr><tr>
+		<td style="text-align: left;">Fried Chicken</td>
+		<td>$6.95</td>
+		<td>$8.50</td>
+	  </tr><tr>
+		<td style="text-align: left;">Veggie</td>
+		<td>$6.95</td>
+		<td>$8.50</td>
+	  </tr><tr>
+		<td style="text-align: left;">Extra Cheese on any sub</td>
+		<td>+$0.50</td>
+		<td>+$0.50</td>
+	      </tr>	    </tbody>
+	  </table>
+
+<table class="foodmenu" align="center">
+  <tbody>
+	  <tr>
+      {% if logged_in %}
+        <th colspan="2"><a href="{% url 'pasta' %}">Pasta</a></th>
+      {% else %}
+		    <th colspan="2"><a name="pasta">Pasta</a></th>
+      {% endif %}
+	  </tr>
+	  <tr>
+		  <td></td>
+		  <td></td>
+	  </tr>
+    <tr>
+		  <td style="text-align: left;">Baked Ziti w/Mozzarella</td>
+		  <td>$6.50</td>
+	  </tr>
+    <tr>
+		  <td style="text-align: left;">Baked Ziti w/Meatballs</td>
+		  <td>$8.75</td>
+	  </tr>
+    <tr>
+		  <td style="text-align: left;">Baked Ziti w/Chicken</td>
+		  <td>$9.75</td>
+	  </tr>
+  </tbody>
+</table>
+
+<table class="foodmenu" align="center">
+	<tbody>
+	  <tr>
+      {% if logged_in %}
+        <th colspan="2"><a href="{% url 'salads' %}">Salads</a></th>
+      {% else %}
+		    <th colspan="2"><a name="salad">Salads</a></th>
+      {% endif %}
+	  </tr>
+	  <tr>
+		  <td></td>
+		  <td></td>
+	  </tr>
+    <tr>
+		  <td style="text-align: left;">Garden Salad</td>
+		  <td>$6.25</td>
+	  </tr>
+    <tr>
+		  <td style="text-align: left;">Greek Salad</td>
+		  <td>$8.25</td>
+	  </tr>
+    <tr>
+		  <td style="text-align: left;">Antipasto</td>
+		  <td>$8.25</td>
+	  </tr>
+    <tr>
+		  <td style="text-align: left;">Salad w/Tuna</td>
+		  <td>$8.25</td>
+	  </tr>
+  </tbody>
+</table>
+
+<table class="foodmenu" align="center">
+	<tbody>
+    <tr>
+      {% if logged_in %}
+        <th colspan="2"><a href="{% url 'dinner_platters' %}">Dinner Platters</a></th>
+      {% else %}
+		    <th colspan="2"><a name="dinner_platters">Dinner Platters</a></th>
+      {% endif %}
+	  </tr>
+	  <tr>
+  		<td></td>
+  		<td>Small</td>
+      <td>Large</td>
+	  </tr>
+    <tr>
+		  <td style="text-align: left;">Garden Salad</td>
+		  <td style="text-align: right;">$40.00</td>
+      <td style="text-align: right;">$65.00</td>
+	  </tr>
+    <tr>
+		  <td style="text-align: left;">Greek Salad</td>
+		  <td>$50.00  </td><td>$75.00</td>
+	  </tr>
+    <tr>
+		<td style="text-align: left;">Antipasto</td>
+		<td>$50.00 </td>
+    <td>$75.00</td>
+	  </tr><tr>
+		<td style="text-align: left;">Baked Ziti</td>
+		<td>$40.00</td>
+    <td>$65.00</td>
+	  </tr><tr>
+		<td style="text-align: left;">Meatball Parm</td>
+		<td>$50.00</td>
+    <td>$75.00</td>
+	  </tr><tr>
+		<td style="text-align: left;">Chicken Parm</td>
+		<td>$55.00</td>
+    <td>$85.00</td>
+	      </tr>
+  </tbody>
+</table>
+
+{% endblock %}

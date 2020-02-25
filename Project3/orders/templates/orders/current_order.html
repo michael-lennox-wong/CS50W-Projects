@@ -1,0 +1,53 @@
+{% extends "orders/base.html" %}
+
+{% block body %}
+
+<h2>Your current order</h2>
+
+{% if item_list %}
+  <table>
+    <tbody>
+      <tr>
+        <td><b>Menu item</b></td>
+        <td><b>Quantity</b></td>
+        <td><b>Unit price</b></td>
+        <td><b>Price</b></td>
+      </tr>
+      {% for item in item_list %}
+        <tr>
+          <td>{{ item.menu_item }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>${{ item.menu_item.price|floatformat:2 }}</td>
+          <td>${{ item.price|floatformat:2 }}</td>
+        </tr>
+      {% endfor %}
+      <tr>
+        <td></td>
+        <td></td>
+        <td><b>Total</b></td>
+        <td><b>${{total|floatformat:2}}</b></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+          <form action="{% url 'submit_order' %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" name="submit_order" value="1">Place your order
+            </button>
+          </form>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+{% else %}
+  You have not added any items to your order.
+{% endif %}
+
+<br>
+<a href="{% url 'index' %}">Return to menu</a><br>
+<a href="{% url 'logout' %}">Logout</a><br>
+<br>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "orders/base.html" %}
+
+{% block body %}
+<center>
+<h2>Subs</h2>
+Choose a sub:<br>
+</center>
+
+<form action="{% url 'sub_size_and_toppings' %}" method="post">
+    {% csrf_token %}
+    <select name="choice">
+        {% for choice in choices %}
+            <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Choose size and toppings">
+</form><br>
+
+
+Logged in as {{ user.username }}<br>
+<a href="{% url 'current_order' %}">View order</a><br>
+<a href="{% url 'index' %}">Return to menu</a><br>
+<a href="{% url 'logout' %}">Logout</a>
+
+
+{% endblock %}

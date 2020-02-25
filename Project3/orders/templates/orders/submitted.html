@@ -1,0 +1,11 @@
+{% extends "orders/base.html" %}
+
+{% block body %}
+<h1>Your order has been placed!</h1>
+
+<br>
+<a href="{% url 'index' %}">Return to menu</a><br>
+<a href="{% url 'logout' %}">Logout</a><br>
+<br>
+
+{% endblock %}

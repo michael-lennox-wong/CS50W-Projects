@@ -1,0 +1,45 @@
+{% extends "orders/base.html" %}
+
+{% block body %}
+
+<h2>Placed orders</h2>
+
+{% if orders %}
+  <table>
+    <tbody>
+      <tr>
+        <td><b>User</b></td>
+        <td><b>Date Submitted</b></td>
+        <td><b>Delivered</b></td>
+        <td><b>Price</b></td>
+      </tr>
+      {% for order in orders %}
+        <tr>
+          <td>{{ order.user }}</td>
+          <td>{{ order.date_submitted }}</td>
+          <td align="center">{% if order.delivered %}
+                Yes
+              {% else %}
+                No
+              {% endif %}
+          </td>
+          <td align="right">${{ order.total|floatformat:2 }}</td>
+        </tr>
+      {% endfor %}
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+{% else %}
+  There are no submitted orders.
+{% endif %}
+
+<br>
+<a href="{% url 'index' %}">Return to menu</a><br>
+<a href="{% url 'logout' %}">Logout</a><br>
+<br>
+
+{% endblock %}
